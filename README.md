@@ -1,4 +1,4 @@
-# go-markdown-toc
+# markdown-toc
 
 <!-- toc -->
 <!-- /toc -->
@@ -39,7 +39,7 @@ markdown-toc README.markdown
 ## Install
 
 ```
-go get -u github.com/aereal/go-markdown-toc
+go get -u github.com/aereal/markdown-toc
 ```
 
 ## See also
