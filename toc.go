@@ -14,7 +14,7 @@ const marker = "<!-- toc -->"
 func InjectToc(in io.Reader, out io.Writer) {
 	reader := bufio.NewReader(in)
 	f := func(c rune) bool {
-    return !(unicode.IsSpace(c) || c == 35)
+		return !(unicode.IsSpace(c) || c == 35)
 	}
 	var toc []string
 	var formatted []string
@@ -26,7 +26,7 @@ func InjectToc(in io.Reader, out io.Writer) {
 		if strings.HasPrefix(line, "#") {
 			pos := strings.IndexFunc(line, f)
 			title := line[pos:]
-      escapedTitle := url.QueryEscape(title)
+			escapedTitle := url.QueryEscape(title)
 			toc = append(toc, fmt.Sprintf("* [%s](#%s)", title, escapedTitle))
 			formatted = append(formatted, line+fmt.Sprintf(`<a name="%s"></a>`, escapedTitle))
 		} else if line == marker {
