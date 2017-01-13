@@ -25,6 +25,9 @@ func InjectToc(in io.Reader, out io.Writer) {
 		line := string(lineBytes)
 		if strings.HasPrefix(line, "#") {
 			pos := strings.IndexFunc(line, f)
+			if pos == -1 {
+				pos = 1
+			}
 			title := line[pos:]
 			escapedTitle := url.QueryEscape(title)
 			toc = append(toc, fmt.Sprintf("* [%s](#%s)", title, escapedTitle))
