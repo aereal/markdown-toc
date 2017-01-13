@@ -34,3 +34,23 @@ h1
 		t.Fatalf("\nExpected:\n%s\n----\nGot:\n%s----\n", expected, got)
 	}
 }
+
+func TestEmptyToc(t *testing.T) {
+	input := strings.NewReader(`<!-- toc -->
+<!-- /toc -->
+
+#
+`)
+
+	expected := `<!-- toc -->
+* [](#)
+<!-- /toc -->
+
+#<a name=""></a>
+`
+	output := new(bytes.Buffer)
+	InjectToc(input, output)
+	if got := output.String(); strings.TrimSpace(got) != strings.TrimSpace(expected) {
+		t.Fatalf("\nExpected:\n%s\n----\nGot:\n%s----\n", expected, got)
+	}
+}
