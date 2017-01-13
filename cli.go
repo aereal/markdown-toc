@@ -31,6 +31,7 @@ func (cli *CLI) Run(args []string) int {
 		fmt.Fprintln(cli.err, err)
 		return 1
 	}
+	defer f.Close()
 
 	InjectToc(f, cli.out)
 
