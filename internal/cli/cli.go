@@ -1,11 +1,17 @@
-package main
+package cli
 
 import (
 	"flag"
 	"fmt"
 	"io"
 	"os"
+
+	markdowntoc "github.com/aereal/markdown-toc"
 )
+
+func NewCLI() *CLI {
+	return &CLI{out: os.Stdout, err: os.Stderr}
+}
 
 type CLI struct {
 	out, err io.Writer
@@ -33,7 +39,7 @@ func (cli *CLI) Run(args []string) int {
 	}
 	defer f.Close()
 
-	InjectToc(f, cli.out)
+	markdowntoc.InjectToc(f, cli.out)
 
 	return 0
 }
