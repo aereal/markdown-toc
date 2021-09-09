@@ -39,7 +39,7 @@ markdown-toc README.markdown
 ## Install
 
 ```
-go get -u github.com/aereal/markdown-toc
+go install github.com/aereal/markdown-toc/cmd/markdown-toc
 ```
 
 ## See also
